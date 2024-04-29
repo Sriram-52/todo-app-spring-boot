@@ -1,0 +1,17 @@
+version: '3.7'
+name: 'todo-app'
+
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Str0ngP@ssw0rd
+    ports:
+      - '5432:5432'
+    volumes:
+      - db-data:/var/lib/postgresql/todo
+
+volumes:
+  db-data:
