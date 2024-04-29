@@ -1,4 +1,4 @@
-package com.example.todo;
+package com.example.todo.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,7 +16,7 @@ import com.example.todo.model.Todo;
 import com.example.todo.repo.TodoRepository;
 
 @RestController
-public class TodoRestController {
+public class TodoController {
     @Autowired
     private TodoRepository repository;
 
