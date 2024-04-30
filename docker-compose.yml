@@ -1,0 +1,31 @@
+version: '3.7'
+name: 'todoapp'
+
+services:
+  backend:
+    build: .
+    ports:
+      - "5000:8080"
+    depends_on:
+      - db
+    networks:
+      - todoapp-network
+  
+  db:
+    image: postgres:latest
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+    volumes:
+      - db-data:/var/lib/postgresql/todo-app
+    networks:
+      - todoapp-network
+
+networks:
+  todoapp-network:
+    driver: bridge
+  
+volumes:
+  db-data:
